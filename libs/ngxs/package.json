@@ -39,6 +39,6 @@
                 "lodash": "lodash"
             }
         },
-        "dest": "../../dist/@frrri-ngxs-crud"
+        "dest": "../../dist/@ng-frrri/-ngxs-crud"
     }
 }

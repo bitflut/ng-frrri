@@ -1,7 +1,7 @@
 # SSR
 
 {% hint style="info" %}
-@frrri should work with @angular/universal out of the box.
+@ng-frrri/ should work with @angular/universal out of the box.
 {% endhint %}
 
 You can specify whether or not a route awaits results before resolving with the `await` property \(see examples below\). During SSR the behaviour defaults to awaiting results before resolving the route, so the data is already displayed when serving your page.

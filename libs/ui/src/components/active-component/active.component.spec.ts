@@ -10,7 +10,7 @@ import { NgxsModule } from '@ngxs/store';
 import { MockRender } from 'ng-mocks';
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { TestPaginatedCrudCollection, TestPaginatedCrudService } from '../../../../ngxs/pagination/src/paginated-crud-collection-state/paginated-crud-collection.state.spec';
+import { TestPaginatedCollection, TestPaginatedCrudService } from '../../../../ngxs/pagination/src/paginated-crud-collection-state/paginated-crud-collection.state.spec';
 import { TestCrudCollection, TestCrudCollectionService } from '../../../../ngxs/src/libs/collection-state/crud-collection.state.spec';
 import { ActiveComponent } from './active.component';
 import { ActiveUiModule } from './active.module';
@@ -22,7 +22,7 @@ interface Post {
     title: string;
 }
 
-@TestPaginatedCrudCollection({
+@TestPaginatedCollection({
     baseUrl: 'https://jsonplaceholder.typicode.com',
     name: 'posts',
 })

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
 import { CollectionReducer, NgxsMiddlewareModule } from '@ng-frrri/ngxs';
 import { GetManyOptions } from '@ng-frrri/ngxs/internal';
-import { PaginatedCollectionState, PaginatedCrudCollectionReducer, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
+import { PaginatedCollectionState, PaginatedCollectionReducer, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 import { StateClass } from '@ngxs/store/internals';
@@ -20,7 +20,7 @@ interface Post {
     title: string;
 }
 
-export function TestPaginatedCrudCollection<T = CollectionReducer>(options: PaginatedCollectionOptions<T>) {
+export function TestPaginatedCollection<T = CollectionReducer>(options: PaginatedCollectionOptions<T>) {
     options = {
         ...options,
         defaults: {
@@ -44,7 +44,7 @@ export class TestPaginatedCrudService<V = any> implements PaginatedCollectionSer
     getNext(url: any) { return of([]); }
 }
 
-@TestPaginatedCrudCollection<PaginatedCrudCollectionReducer>({
+@TestPaginatedCollection<PaginatedCollectionReducer>({
     name: 'post',
 })
 @Injectable()

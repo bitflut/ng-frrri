@@ -16,9 +16,9 @@
     "url": "https://github.com/bitflut/frrri/issues"
   },
   "homepage": "https://bitflut.gitbook.io/frrri/",
-  "packageScope": "@frrri",
+  "packageScope": "@ng-frrri/",
   "packages": [
-    "libs/ngxs-crud"
+    "libs/ngxs"
   ],
   "scripts": {
     "nx": "nx",
@@ -28,10 +28,10 @@
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
-    "build:libs": "rm -rf dist && run-s build:libs:ngxs-crud",
-    "build:libs:ngxs-crud": "ng-packagr -p libs/ngxs-crud/package.json",
-    "publish:libs": "run-s publish:libs:ngxs-crud",
-    "publish:libs:ngxs-crud": "npm publish dist/@frrri-ngxs-crud --access=public",
+    "build:libs": "rm -rf dist && run-s build:libs:ngxs",
+    "build:libs:ngxs": "ng-packagr -p libs/ngxs/package.json",
+    "publish:libs": "run-s publish:libs:ngxs",
+    "publish:libs:ngxs": "npm publish dist/@ng-frrri/-ngxs --access=public",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",

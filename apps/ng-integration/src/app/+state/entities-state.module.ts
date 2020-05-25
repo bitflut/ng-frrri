@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CrudCollectionOptionsProvider, CRUD_COLLECTION_OPTIONS_TOKEN } from '@ng-frrri/ngxs';
+import { CollectionOptionsProvider, COLLECTION_OPTIONS_TOKEN } from '@ng-frrri/ngxs';
 import { NgxsModule } from '@ngxs/store';
 import { EntitiesState } from './entities.state';
 import { CommentsState } from './entities/comments.state';
@@ -18,13 +18,13 @@ import { UsersState } from './entities/users.state';
         ]),
     ],
     providers: [{
-        provide: CRUD_COLLECTION_OPTIONS_TOKEN,
+        provide: COLLECTION_OPTIONS_TOKEN,
         useValue: {
             baseUrl: 'http://localhost:3000',
             requestOptions: {
                 delay: 500,
             },
-        } as CrudCollectionOptionsProvider,
+        } as CollectionOptionsProvider,
     }],
 })
 export class EntitiesStateModule { }

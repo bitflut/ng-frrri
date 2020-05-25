@@ -7,12 +7,12 @@ import { Observable, pipe } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Paginated, PaginatedCollectionService } from './paginated-collection-service.interface';
 
-export type PaginatedCrudCollectionReducer<Entity = {}, IdType extends EntityIdType = EntityIdType> = CollectionReducer<Entity, IdType> & {
+export type PaginatedCollectionReducer<Entity = {}, IdType extends EntityIdType = EntityIdType> = CollectionReducer<Entity, IdType> & {
     next: string,
 };
 
 @Injectable()
-export class PaginatedCollectionState<Entity = {}, IdType extends EntityIdType = string, Reducer extends PaginatedCrudCollectionReducer<Entity, IdType> = PaginatedCrudCollectionReducer<Entity, IdType>>
+export class PaginatedCollectionState<Entity = {}, IdType extends EntityIdType = string, Reducer extends PaginatedCollectionReducer<Entity, IdType> = PaginatedCollectionReducer<Entity, IdType>>
     extends CollectionState<Entity, IdType, Reducer> {
 
     protected readonly pageSize: number;
