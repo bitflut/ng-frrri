@@ -1,8 +1,8 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
-import { NgxsMiddlewareModule } from '@ng-frrri/ngxs';
-import { HttpCollectionModule, PaginatedHttpCollection } from '@ng-frrri/ngxs-http';
+import { HttpCollectionModule, PaginatedHttpCollection, PaginatedHttpCollectionService } from '@ng-frrri/ngxs-http';
 import { GetManyOptions } from '@ng-frrri/ngxs/internal';
 import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
@@ -16,7 +16,6 @@ interface Post {
     body: string;
     title: string;
 }
-
 
 @Injectable()
 export class TestPaginatedCrudService<V = any> implements PaginatedCollectionService<V> {
@@ -32,12 +31,13 @@ export class TestPaginatedCrudService<V = any> implements PaginatedCollectionSer
 class PostsEntitiesState extends PaginatedCollectionState<Post, number> { }
 
 describe('PaginatedCollectionState', () => {
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
+                HttpClientTestingModule,
                 NgxsDataPluginModule.forRoot(),
                 NgxsModule.forRoot([PostsEntitiesState]),
-                NgxsMiddlewareModule.forRoot(),
                 HttpCollectionModule.forRoot(),
             ],
             providers: [
@@ -51,45 +51,24 @@ describe('PaginatedCollectionState', () => {
     });
 
     it('should getMany', inject([
+        HttpTestingController,
         PostsEntitiesState,
-        TestPaginatedCrudService,
+        PaginatedHttpCollectionService,
     ], (
+        httpMock: HttpTestingController,
         postsState: PostsEntitiesState,
-        service: TestPaginatedCrudService,
+        service: PaginatedHttpCollectionService,
     ) => {
         expect(postsState.paginatedServiceToken).toBeDefined();
         expect(postsState.serviceToken).toBeDefined();
         expect(postsState.stateOptions).toBeDefined();
+
         const spy = spyOn(service, 'getMany').and.callThrough();
         postsState.getMany().toPromise();
+        const req = httpMock.expectOne(postsState.stateOptions.requestOptions.collectionUrlFactory());
+        expect(req.request.method).toEqual('GET');
+        req.flush([]);
         expect(spy).toHaveBeenCalledTimes(1);
-    },
-    ));
-
-    it('should getAll', inject([
-        PostsEntitiesState,
-        TestPaginatedCrudService,
-    ], (
-        postsState: PostsEntitiesState,
-        service: TestPaginatedCrudService,
-    ) => {
-        const spy = spyOn(service, 'getAll').and.callThrough();
-        postsState.getAll().toPromise();
-        expect(spy).toHaveBeenCalledTimes(1);
-    },
-    ));
-
-    it('should getNext', inject([
-        PostsEntitiesState,
-        TestPaginatedCrudService,
-    ], (
-        postsState: PostsEntitiesState,
-        service: TestPaginatedCrudService,
-    ) => {
-        const spy = spyOn(service, 'getNext').and.callThrough();
-        postsState.getNext().toPromise();
-        expect(spy).toHaveBeenCalledTimes(1);
-    },
-    ));
+    }));
 
 });
