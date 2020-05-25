@@ -8,12 +8,12 @@ import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 import { MockRender } from 'ng-mocks';
-import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { TestPaginatedCollection, TestPaginatedCrudService } from '../../../../ngxs/pagination/src/paginated-crud-collection-state/paginated-crud-collection.state.spec';
-import { TestCrudCollection, TestCrudCollectionService } from '../../../../ngxs/src/libs/collection-state/crud-collection.state.spec';
 import { ActiveComponent } from './active.component';
 import { ActiveUiModule } from './active.module';
+import { of, Subject } from 'rxjs';
+import { TestPaginatedCollection, TestPaginatedCrudService } from '../../../../ngxs/pagination/src/paginated-collection-state/paginated-collection.state.spec';
+import { TestCrudCollection, TestCrudCollectionService } from '../../../../ngxs/src/libs/collection-state/collection.state.spec';
 
 interface Post {
     userId: number;
