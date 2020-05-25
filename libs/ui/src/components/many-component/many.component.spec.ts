@@ -4,14 +4,13 @@ import { Injectable } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CollectionState, CrudEntities, CrudEntitiesState, NgxsMiddlewareModule } from '@ng-frrri/ngxs';
+import { HttpCollection, HttpCollectionModule, PaginatedHttpCollection, PaginatedHttpCollectionService } from '@ng-frrri/ngxs-http';
 import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 import { MockRender } from 'ng-mocks';
 import { Subject } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
-import { TestPaginatedCollection, TestPaginatedCrudService } from '../../../../ngxs/pagination/src/paginated-collection-state/paginated-collection.state.spec';
-import { TestCrudCollection, TestCrudCollectionService } from '../../../../ngxs/src/libs/collection-state/collection.state.spec';
 import { ManyComponent } from './many.component';
 import { ManyUiModule } from './many.module';
 
@@ -22,7 +21,7 @@ interface Post {
     title: string;
 }
 
-@TestPaginatedCollection({
+@PaginatedHttpCollection({
     baseUrl: 'https://jsonplaceholder.typicode.com',
     name: 'posts',
 })
@@ -37,7 +36,7 @@ interface Comment {
     email: string;
 }
 
-@TestCrudCollection({
+@HttpCollection({
     name: 'comments',
     baseUrl: 'https://jsonplaceholder.typicode.com',
 })
@@ -107,6 +106,7 @@ describe('ManyComponent', () => {
                 NgxsModule.forRoot([EntityCrudEntitiesState, PostsEntitiesState, CommentsEntitiesState]),
                 NgxsDataPluginModule.forRoot(),
                 NgxsMiddlewareModule.forRoot(),
+                HttpCollectionModule.forRoot(),
                 ManyUiModule,
             ],
             providers: [
@@ -115,8 +115,6 @@ describe('ManyComponent', () => {
                     multi: true,
                     useClass: PaginationInterceptor,
                 },
-                TestPaginatedCrudService,
-                TestCrudCollectionService,
             ],
         }).compileComponents();
 
@@ -142,10 +140,10 @@ describe('ManyComponent', () => {
 
     it('should show contents correctly', inject([
         PostsEntitiesState,
-        TestPaginatedCrudService,
+        PaginatedHttpCollectionService,
     ], (
         postsEntities: PostsEntitiesState,
-        service: TestPaginatedCrudService,
+        service: PaginatedHttpCollectionService,
     ) => {
         // INIT
         expect(fixture.nativeElement.textContent.trim()).toEqual('My content');
@@ -194,10 +192,10 @@ describe('ManyComponent', () => {
 
     it('should show errors', inject([
         PostsEntitiesState,
-        TestPaginatedCrudService,
+        PaginatedHttpCollectionService,
     ], (
         postsEntities: PostsEntitiesState,
-        service: TestPaginatedCrudService,
+        service: PaginatedHttpCollectionService,
     ) => {
         // INIT
         expect(fixture.nativeElement.textContent.trim()).toEqual('My content');

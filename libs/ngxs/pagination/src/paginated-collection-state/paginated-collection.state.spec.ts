@@ -1,16 +1,13 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
-import { CollectionReducer, NgxsMiddlewareModule } from '@ng-frrri/ngxs';
+import { NgxsMiddlewareModule } from '@ng-frrri/ngxs';
+import { HttpCollectionModule, PaginatedHttpCollection } from '@ng-frrri/ngxs-http';
 import { GetManyOptions } from '@ng-frrri/ngxs/internal';
-import { PaginatedCollectionState, PaginatedCollectionReducer, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
+import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
-import { StateClass } from '@ngxs/store/internals';
 import { Observable, of } from 'rxjs';
-import { CollectionStateOptions } from '../../../src/libs/collection-state/colleciton-state-options.interface';
-import { TestCrudCollection, TestCrudCollectionService } from '../../../src/libs/collection-state/collection.state.spec';
-import { PaginatedCollectionOptions } from './paginated-collection-options.interface';
 import { PaginatedCollectionService } from './paginated-collection-service.interface';
 
 interface Post {
@@ -20,31 +17,15 @@ interface Post {
     title: string;
 }
 
-export function TestPaginatedCollection<T = CollectionReducer>(options: PaginatedCollectionOptions<T>) {
-    options = {
-        ...options,
-        defaults: {
-            next: undefined,
-            ...options.defaults,
-        },
-    };
-
-    const crudCollectionFn = TestCrudCollection(options);
-    return function (target: StateClass) {
-        target.prototype.pageSize = options.size;
-        target.prototype.paginatedServiceToken = TestPaginatedCrudService;
-        crudCollectionFn(target);
-    };
-}
 
 @Injectable()
 export class TestPaginatedCrudService<V = any> implements PaginatedCollectionService<V> {
-    getMany(stateOptions: CollectionStateOptions, options: GetManyOptions & { size?: number } = {}) { return of([]); }
-    getAll(stateOptions: CollectionStateOptions, options: GetManyOptions & { size?: number } = {}): Observable<V[]> { return of([]); }
+    getMany(stateOptions: any, options: GetManyOptions & { size?: number } = {}) { return of([]); }
+    getAll(stateOptions: any, options: GetManyOptions & { size?: number } = {}): Observable<V[]> { return of([]); }
     getNext(url: any) { return of([]); }
 }
 
-@TestPaginatedCollection<PaginatedCollectionReducer>({
+@PaginatedHttpCollection({
     name: 'post',
 })
 @Injectable()
@@ -57,6 +38,7 @@ describe('PaginatedCollectionState', () => {
                 NgxsDataPluginModule.forRoot(),
                 NgxsModule.forRoot([PostsEntitiesState]),
                 NgxsMiddlewareModule.forRoot(),
+                HttpCollectionModule.forRoot(),
             ],
             providers: [
                 {
@@ -64,8 +46,6 @@ describe('PaginatedCollectionState', () => {
                     multi: true,
                     useClass: PaginationInterceptor,
                 },
-                TestPaginatedCrudService,
-                TestCrudCollectionService,
             ],
         }).compileComponents();
     });
