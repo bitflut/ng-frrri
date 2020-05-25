@@ -10,20 +10,45 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ng-frrri/router-middleware": ["libs/router-middleware/src/public_api.ts"],
-      "@ng-frrri/router-middleware/internal": ["libs/router-middleware/internal/src/public_api.ts"],
-      "@ng-frrri/router-middleware/operators": ["libs/router-middleware/operators/src/public_api.ts"],
-      "@ng-frrri/ngxs": ["libs/ngxs/src/public_api.ts"],
-      "@ng-frrri/ngxs/internal": ["libs/ngxs/internal/src/public_api.ts"],
-      "@ng-frrri/ngxs/pagination": ["libs/ngxs/pagination/src/public_api.ts"],
-      "@ng-frrri/ui": ["libs/ui/src/public_api.ts"]
+      "@ng-frrri/router-middleware": [
+        "libs/router-middleware/src/public_api.ts"
+      ],
+      "@ng-frrri/router-middleware/internal": [
+        "libs/router-middleware/internal/src/public_api.ts"
+      ],
+      "@ng-frrri/router-middleware/operators": [
+        "libs/router-middleware/operators/src/public_api.ts"
+      ],
+      "@ng-frrri/ngxs": [
+        "libs/ngxs/src/public_api.ts"
+      ],
+      "@ng-frrri/ngxs/internal": [
+        "libs/ngxs/internal/src/public_api.ts"
+      ],
+      "@ng-frrri/ngxs/pagination": [
+        "libs/ngxs/pagination/src/public_api.ts"
+      ],
+      "@ng-frrri/ui": [
+        "libs/ui/src/public_api.ts"
+      ],
+      "@ng-frrri/ngxs-http": [
+        "libs/ngxs-http/src/public_api.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

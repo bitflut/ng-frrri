@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -24,7 +29,9 @@
     },
     "ng-integration-e2e": {
       "tags": [],
-      "implicitDependencies": ["ng-integration"]
+      "implicitDependencies": [
+        "ng-integration"
+      ]
     },
     "router-middleware": {
       "tags": []
@@ -33,6 +40,9 @@
       "tags": []
     },
     "ui": {
+      "tags": []
+    },
+    "ngxs-http": {
       "tags": []
     }
   }

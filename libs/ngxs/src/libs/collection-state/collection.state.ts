@@ -29,7 +29,9 @@ export class CollectionState<Entity = {}, IdType extends EntityIdType = string, 
     readonly stateOptions: CollectionStateOptions;
 
     protected service = this.injector.get<CollectionService<Entity, IdType>>(this.serviceToken);
-    private statesRegistry = this.injector.get(FRRRI_STATES_REGISTRY);
+
+    /** @Optional `statesRegistry` is only needed if population is used */
+    private statesRegistry = this.injector.get(FRRRI_STATES_REGISTRY, null, InjectFlags.Optional);
     private populations: Array<ReturnType<typeof populate>>;
 
     constructor(protected injector: Injector) {

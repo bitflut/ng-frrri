@@ -4,14 +4,13 @@ import { Injectable } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CollectionState, CrudEntities, CrudEntitiesState, NgxsMiddlewareModule } from '@ng-frrri/ngxs';
+import { HttpCollection, HttpCollectionModule, HttpCollectionService, PaginatedHttpCollection } from '@ng-frrri/ngxs-http';
 import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 import { MockRender } from 'ng-mocks';
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { TestPaginatedCrudCollection, TestPaginatedCrudService } from '../../../../ngxs/pagination/src/paginated-crud-collection-state/paginated-crud-collection.state.spec';
-import { TestCrudCollection, TestCrudCollectionService } from '../../../../ngxs/src/libs/collection-state/crud-collection.state.spec';
 import { ActiveComponent } from './active.component';
 import { ActiveUiModule } from './active.module';
 
@@ -22,7 +21,7 @@ interface Post {
     title: string;
 }
 
-@TestPaginatedCrudCollection({
+@PaginatedHttpCollection({
     baseUrl: 'https://jsonplaceholder.typicode.com',
     name: 'posts',
 })
@@ -37,7 +36,7 @@ interface Comment {
     email: string;
 }
 
-@TestCrudCollection({
+@HttpCollection({
     name: 'comments',
     baseUrl: 'https://jsonplaceholder.typicode.com',
 })
@@ -106,15 +105,15 @@ describe('ActiveComponent', () => {
                 NgxsModule.forRoot([EntityCrudEntitiesState, PostsEntitiesState, CommentsEntitiesState]),
                 NgxsDataPluginModule.forRoot(),
                 NgxsMiddlewareModule.forRoot(),
+                HttpCollectionModule.forRoot(),
                 ActiveUiModule,
             ],
-            providers: [{
-                provide: HTTP_INTERCEPTORS,
-                multi: true,
-                useClass: PaginationInterceptor,
-            },
-                TestPaginatedCrudService,
-                TestCrudCollectionService,
+            providers: [
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    multi: true,
+                    useClass: PaginationInterceptor,
+                },
             ],
         }).compileComponents();
 
@@ -139,11 +138,11 @@ describe('ActiveComponent', () => {
     it('should show contents correctly', inject([
         HttpTestingController,
         PostsEntitiesState,
-        TestCrudCollectionService,
+        HttpCollectionService,
     ], (
         httpMock: HttpTestingController,
         postsEntities: PostsEntitiesState,
-        service: TestCrudCollectionService,
+        service: HttpCollectionService,
     ) => {
         // INIT
         expect(fixture.nativeElement.textContent.trim()).toEqual('My content');

@@ -30,6 +30,6 @@
             "entryFile": "src/public_api.ts",
             "umdModuleIds": {}
         },
-        "dest": "../../dist/@frrri-ngxs-crud"
+        "dest": "../../dist/@ng-frrri/-ngxs-crud"
     }
 }

@@ -90,7 +90,7 @@ const routes: Routes = [
 ]
 ```
 
-When opening `/posts-with-user`, it will load all posts and then all users of the loaded posts. If you are using _PaginatedCrudCollection_, it will do so for every page you load.
+When opening `/posts-with-user`, it will load all posts and then all users of the loaded posts. If you are using _PaginatedCollection_, it will do so for every page you load.
 
 #### Getting one post's comments \(via PopulationStrategy.ForeignId\)
 

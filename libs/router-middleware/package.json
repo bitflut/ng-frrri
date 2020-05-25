@@ -22,6 +22,6 @@
                 "lodash": "lodash"
             }
         },
-        "dest": "../../dist/@frrri-routes"
+        "dest": "../../dist/@ng-frrri/-routes"
     }
 }

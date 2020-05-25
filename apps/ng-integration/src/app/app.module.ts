@@ -8,6 +8,7 @@ import { BreadcrumbsUiModule } from '@ng-frrri/ui';
 import { AppRoutingModule } from './app-routing.module';
 import { AppStateModule } from './app-state.module';
 import { AppComponent } from './app.component';
+import { HttpCollectionModule } from '@ng-frrri/ngxs-http';
 
 @NgModule({
     declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
         HttpClientModule,
         AppRoutingModule,
         AppStateModule,
+        HttpCollectionModule.forRoot(),
         FrrriModule.forRoot(),
         NgxsMiddlewareModule.forRoot(),
         BreadcrumbsUiModule,

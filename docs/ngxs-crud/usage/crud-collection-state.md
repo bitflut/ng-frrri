@@ -34,10 +34,10 @@ Overriding defaults for every **@CrudCollection** globally:
     providers: [
         ...
         {
-            provide: CRUD_COLLECTION_OPTIONS_TOKEN,
+            provide: COLLECTION_OPTIONS_TOKEN,
             useValue: {
                 baseUrl: 'http://localhost:3000',
-            } as CrudCollectionOptionsProvider,
+            } as CollectionOptionsProvider,
         }
     ],
 })
