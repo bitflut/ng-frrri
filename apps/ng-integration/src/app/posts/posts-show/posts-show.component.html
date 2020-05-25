@@ -1,0 +1,38 @@
+<div>
+    <frrri-active path="entities.posts" #activePostComponent>
+        <ng-container *ngIf="(activePostComponent.loading$ | async) !== true">
+            <ng-container *ngIf="activePostComponent.active$ | async as post">
+                <div class="font-bold">#{{ post.id }} {{ post.title }}</div>
+                <div class="mt-3">{{ post.body }}</div>
+
+                <frrri-one path="entities.users" [id]="post.userId" #oneUser>
+                    <ng-container *ngIf="oneUser.one$ | async as user">
+                        <div class="mt-3">
+                            &mdash; {{ user.name }} &lt;{{ user.email }}&gt;
+                        </div>
+                    </ng-container>
+                </frrri-one>
+            </ng-container>
+        </ng-container>
+
+        <div class="loading">
+            <div class="p-2 bg-gray-400 rounded">LOADING...</div>
+        </div>
+    </frrri-active>
+</div>
+
+<div class="mt-12">
+    <frrri-many path="entities.comments" #comments>
+        <div class="border-l border-gray-600 pl-3 -my-3 text-gray-600" *ngIf="comments.loaded$ | async">
+            <div class="mb-3">Comments:</div>
+            <ng-container *ngFor="let comment of comments.all$ | async; trackBy:comments.trackByKey()">
+                <ng-container *ngIf="comment.postId === (activePostComponent.activeId$ | async)">
+                    <div class="py-3">
+                        <div class="font-bold">{{ comment.email }} {{ comment.name }}</div>
+                        <div>{{ comment.body }}</div>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </frrri-many>
+</div>

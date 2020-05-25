@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActiveComponent should show contents correctly: init 1`] = `
+<mock-render>
+  <frrri-active
+    path="cache.posts"
+  >
+    
+    
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+  </frrri-active>
+</mock-render>
+`;
+
+exports[`ActiveComponent should show contents correctly: loaded 1`] = `
+<mock-render>
+  <frrri-active
+    path="cache.posts"
+  >
+    
+    
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+  </frrri-active>
+</mock-render>
+`;
+
+exports[`ActiveComponent should show contents correctly: loading 1`] = `
+<mock-render>
+  <frrri-active
+    path="cache.posts"
+  >
+    
+    
+    <div
+      class="loading-content"
+    >
+      <div
+        class="loading"
+      >
+        mock-loading
+      </div>
+    </div>
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+  </frrri-active>
+</mock-render>
+`;

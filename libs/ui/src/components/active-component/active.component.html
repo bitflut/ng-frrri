@@ -1,0 +1,17 @@
+<div class="error-content" *ngIf="error$ | async">
+    <div #errorContent>
+        <ng-content select=".error"></ng-content>
+    </div>
+
+    <ng-container *ngIf="!(errorContent.innerHTML||'').trim()">
+        <div style="color: red;">{{ error$ | async }}</div>
+    </ng-container>
+</div>
+
+<div class="loading-content" *ngIf="loading$ | async">
+    <ng-content select=".loading"></ng-content>
+</div>
+
+<div class="content">
+    <ng-content></ng-content>
+</div>

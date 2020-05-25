@@ -1,0 +1,343 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ManyComponent should show contents correctly: init 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show contents correctly: loaded-page-1-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <div
+      class="load-more-content"
+    >
+      <div>
+        <div>
+          <div
+            class="load-more"
+          >
+            mock-more
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show contents correctly: loaded-page-2-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <div
+      class="load-more-content"
+    >
+      <div>
+        <div>
+          <div
+            class="load-more"
+          >
+            mock-more
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show contents correctly: loaded-page-3-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show contents correctly: loading-page-1-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    <div
+      class="loading-first-content"
+    >
+      <div>
+        <div
+          class="loading-first"
+        >
+          mock-first-load
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show contents correctly: loading-page-2-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    <div
+      class="loading-content"
+    >
+      <div>
+        <div
+          class="loading"
+        >
+          mock-loading
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div
+      class="loading-more-content"
+    >
+      <div />
+      
+      <div>
+         Loading more... 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show contents correctly: loading-page-3-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    <div
+      class="loading-content"
+    >
+      <div>
+        <div
+          class="loading"
+        >
+          mock-loading
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div
+      class="loading-more-content"
+    >
+      <div />
+      
+      <div>
+         Loading more... 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show errors: error-page-1-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    
+    
+    
+    <div
+      class="error-content"
+    >
+      <div />
+      
+      
+      <div
+        style="color: red;"
+      >
+        Http failure response for https://jsonplaceholder.typicode.com/posts: 400 Bad Request
+      </div>
+    </div>
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show errors: init 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;
+
+exports[`ManyComponent should show errors: loading-page-1-of-3 1`] = `
+<mock-render>
+  <frrri-many
+    path="cache.posts"
+  >
+    <div
+      class="content"
+    >
+       My content 
+    </div>
+    
+    <div
+      class="loading-first-content"
+    >
+      <div>
+        <div
+          class="loading-first"
+        >
+          mock-first-load
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    
+    
+    
+  </frrri-many>
+</mock-render>
+`;

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../node_modules/ng-packagr/package.schema.json",
+    "name": "@ng-frrri/router-middleware",
+    "version": "0.0.2",
+    "license": "MIT",
+    "peerDependencies": {
+        "@angular/common": "^9.1.0",
+        "@angular/core": "^9.1.0",
+        "lodash": "^4.17.15"
+    },
+    "keywords": [],
+    "author": "marian@bitflut.com bitflut.com",
+    "homepage": "https://bitflut.gitbook.io/frrri/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bitflut/frrri"
+    },
+    "ngPackage": {
+        "lib": {
+            "entryFile": "src/public_api.ts",
+            "umdModuleIds": {
+                "lodash": "lodash"
+            }
+        },
+        "dest": "../../dist/@frrri-routes"
+    }
+}

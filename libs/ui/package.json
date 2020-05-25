@@ -1,0 +1,35 @@
+{
+    "$schema": "../../node_modules/ng-packagr/package.schema.json",
+    "name": "@ng-frrri/ngxs-crud",
+    "version": "0.0.2",
+    "license": "MIT",
+    "peerDependencies": {
+        "@angular/common": "^9.1.0",
+        "@angular/core": "^9.1.0",
+        "@ngxs/store": "^3.6.2",
+        "@ngxs-labs/data": "^3.0.4",
+        "lodash": "^4.17.15",
+        "parse-link-header": "^1.0.1"
+    },
+    "keywords": [
+        "Angular",
+        "LYXS",
+        "NGXS",
+        "API",
+        "CRUD",
+        "State management"
+    ],
+    "author": "marian@bitflut.com bitflut.com",
+    "homepage": "https://bitflut.gitbook.io/frrri/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bitflut/frrri"
+    },
+    "ngPackage": {
+        "lib": {
+            "entryFile": "src/public_api.ts",
+            "umdModuleIds": {}
+        },
+        "dest": "../../dist/@frrri-ngxs-crud"
+    }
+}

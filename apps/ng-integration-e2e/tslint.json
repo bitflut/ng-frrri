@@ -1,0 +1,11 @@
+{
+  "extends": "../../tslint.json",
+  "linterOptions": {
+    "exclude": [
+      "!**/*"
+    ]
+  },
+  "rules": {
+    "no-unused-expression": false
+  }
+}

@@ -1,0 +1,21 @@
+language: node_js
+sudo: false
+node_js:
+    - '12.0.0'
+
+cache:
+    directories:
+        - node_modules
+
+install:
+    - npm ci
+
+script:
+    - npm run affected:lint
+    - npm run affected:build
+    - npm run affected:e2e
+    - npm run affected:test
+
+branches:
+  only:
+    - master

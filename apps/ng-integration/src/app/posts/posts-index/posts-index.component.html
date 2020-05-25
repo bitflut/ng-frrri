@@ -1,0 +1,44 @@
+<div class="flex flex-row -mx-6">
+    <div class="w-1/3 px-6 h-screen overflow-y-auto">
+        <frrri-many path="entities.posts" #posts>
+            <ng-container *ngIf="posts.loaded$ | async">
+                <div class="-my-2">
+                    <ng-container *ngFor="let post of posts.all$ | async; trackBy: posts.trackByKey()">
+                        <a class="block py-2"
+                            [class.text-blue-600]="(posts.activeId$ | async)?.toString() == post.id.toString()"
+                            [routerLink]="post.id">
+                            <div class="font-bold">
+                                #{{ post.id }} {{ post.title }}
+                            </div>
+                            <div>{{ post.body | slice:0:20 }}...</div>
+                            <frrri-one path="entities.users" [id]="post.userId" #oneUser>
+                                <ng-container *ngIf="oneUser.one$ | async as user">
+                                    {{ user.name }}
+                                </ng-container>
+                            </frrri-one>
+                        </a>
+                    </ng-container>
+                </div>
+            </ng-container>
+
+            <div class="loading-first">
+                <div class="p-2 bg-gray-400 rounded">LOADING...</div>
+            </div>
+
+            <div class="load-more mt-3">
+                <a class="cursor-pointer inline-block rounded border-2 border-black py-1 px-3">
+                    Load more...
+                </a>
+            </div>
+
+            <div class="loading-more mt-3">
+                <a class="cursor-pointer inline-block rounded border-2 border-black py-1 px-3">
+                    Loading more...
+                </a>
+            </div>
+        </frrri-many>
+    </div>
+    <div class="w-2/3 px-6 h-screen overflow-y-auto">
+        <router-outlet></router-outlet>
+    </div>
+</div>

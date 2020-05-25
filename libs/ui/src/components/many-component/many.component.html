@@ -1,0 +1,63 @@
+<div class="content">
+    <ng-content></ng-content>
+</div>
+
+<div class="loading-first-content" *ngIf="loadingFirst$ | async; else loadingTemplate">
+    <div #loadingFirstContent>
+        <ng-content select=".loading-first"></ng-content>
+    </div>
+
+    <div *ngIf="!(loadingFirstContent.innerHTML||'').trim()">
+        <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+    </div>
+</div>
+
+<ng-container *ngIf="(loaded$ | async) && (next$ | async)">
+    <ng-container *ngTemplateOutlet="loadMoreTemplate"></ng-container>
+</ng-container>
+
+<div class="error-content" *ngIf="error$ | async">
+    <div #errorContent>
+        <ng-content select=".error"></ng-content>
+    </div>
+
+    <ng-container *ngIf="!(errorContent.innerHTML||'').trim()">
+        <div style="color: red;">{{ error$ | async }}</div>
+    </ng-container>
+</div>
+
+<ng-template #loadingTemplate>
+    <div class="loading-content" *ngIf="loading$ | async">
+        <div #loadingContent>
+            <ng-content select=".loading"></ng-content>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #loadMoreTemplate>
+    <ng-container *ngIf="(loadingNext$ | async) !== true; else loadingNextTemplate">
+        <div class="load-more-content">
+            <div (click)="loadNext()">
+                <div #loadMoreContent>
+                    <ng-content select=".load-more"></ng-content>
+                </div>
+
+                <div *ngIf="!(loadMoreContent.innerHTML||'').trim()">
+                    Load more...
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #loadingNextTemplate>
+    <div class="loading-more-content">
+        <div #loadMoreContent>
+            <ng-content select=".loading-more"></ng-content>
+        </div>
+
+        <div *ngIf="!(loadMoreContent.innerHTML||'').trim()">
+            Loading more...
+        </div>
+    </div>
+</ng-template>

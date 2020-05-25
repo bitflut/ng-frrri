@@ -1,0 +1,11 @@
+{
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/public_api.ts",
+      "umdModuleIds": {
+        "@ngxs-labs/data/decorators": "@ngxs-labs/data/decorators",
+        "parse-link-header": "parse-link-header"
+      }
+    }
+  }
+}

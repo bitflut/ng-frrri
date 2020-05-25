@@ -1,0 +1,72 @@
+<div class="fixed inset-x-0">
+    <div class="px-16 py-2 bg-black text-white">
+        <div class="flex flex-row -mx-3">
+            <div class="px-3">
+                <a routerLink="/">
+                    Home
+                </a>
+            </div>
+            <div class="px-3">
+                <a routerLink="/posts">
+                    Posts
+                </a>
+            </div>
+            <div class="px-3">
+                <a routerLink="/posts/with-breadcrumbs">
+                    Breadcrumbs
+                </a>
+            </div>
+            <div class="px-3">
+                <a routerLink="/posts/await">
+                    Await
+                </a>
+            </div>
+            <div class="px-3">
+                <a routerLink="/posts/paginated">
+                    Paginated
+                </a>
+            </div>
+            <div class="px-3">
+                <a routerLink="/posts/with-comments">
+                    With comments
+                </a>
+            </div>
+            <div class="px-3">
+                <a routerLink="/posts/with-user">
+                    With user &amp; comments
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <frrri-breadcrumbs #crumbs>
+        <div class="px-16 py-2 bg-gray-800 text-white">
+            <div class="flex flex-row items-center -mx-1">
+                <ng-container *ngFor="let crumb of crumbs.all$ | async; let last = last; trackBy:crumbs.trackByKey">
+                    <ng-container *ngIf="last; else notLastTemplate">
+                        <div class="px-1">{{ crumb.title }}</div>
+                    </ng-container>
+
+                    <ng-template #notLastTemplate>
+                        <div class="px-1">
+                            <a class="text-gray-400" [routerLink]="crumb.url">{{ crumb.title }}</a>
+                        </div>
+
+                        <div class="px-1 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-chevron-right">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </div>
+        </div>
+    </frrri-breadcrumbs>
+</div>
+
+
+<div class="px-16 py-24">
+    <router-outlet></router-outlet>
+</div>
