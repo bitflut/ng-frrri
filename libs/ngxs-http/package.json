@@ -1,6 +1,6 @@
 {
   "name": "@ng-frrri/ngxs-http",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "build": "ng-packagr"
@@ -25,5 +25,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bitflut/ng-frrri"
-  }
+  },
+  "gitHead": "d9596653d19715026968bfddfdba607ac08492fc"
 }

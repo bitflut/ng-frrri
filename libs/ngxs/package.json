@@ -1,6 +1,6 @@
 {
   "name": "@ng-frrri/ngxs",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "build": "ng-packagr",
@@ -36,5 +36,6 @@
   "publishConfig": {
     "access": "public",
     "directory": "./dist"
-  }
+  },
+  "gitHead": "d9596653d19715026968bfddfdba607ac08492fc"
 }

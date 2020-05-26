@@ -30,7 +30,7 @@
     "publish:libs": "npx lerna publish",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
-    "affected:build": "nx affected:build",
+    "affected:build": "nx affected:build --exclude ng-integration",
     "affected:e2e:nx": "nx affected:e2e",
     "affected:e2e": "run-p -r json-server affected:e2e:nx",
     "affected:test": "run-p -r json-server affected:test:nx",
