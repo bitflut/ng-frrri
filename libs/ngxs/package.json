@@ -1,6 +1,6 @@
 {
   "name": "@ng-frrri/ngxs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "ng-packagr",
@@ -9,14 +9,14 @@
   "peerDependencies": {
     "@angular/common": "^9.1.0",
     "@angular/core": "^9.1.0",
+    "@ng-frrri/router-middleware": "^0.0.1",
     "@ngxs-labs/data": "^3.0.4",
     "@ngxs/store": "^3.6.2",
     "lodash": "^4.17.15",
-    "parse-link-header": "^1.0.1",
-    "@ng-frrri/router-middleware": "^0.0.1"
+    "parse-link-header": "^1.0.1"
   },
   "devDependencies": {
-    "@ng-frrri/router-middleware": "^0.0.1"
+    "@ng-frrri/router-middleware": "^0.1.0"
   },
   "keywords": [
     "angular",
