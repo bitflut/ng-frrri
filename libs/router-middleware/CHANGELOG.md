@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.3-alpha.0](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/router-middleware@0.0.2...@ng-frrri/router-middleware@0.0.3-alpha.0) (2020-05-26)
+
+
+### Features
+
+* build scripts ([8294ed4](https://github.com/bitflut/ng-frrri/commit/8294ed42f94f174d968dc4074f03e3d1347b5c81))
+
+
+
+
+
 ## [0.0.2](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/router-middleware@0.1.0...@ng-frrri/router-middleware@0.0.2) (2020-05-26)
 
 **Note:** Version bump only for package @ng-frrri/router-middleware
