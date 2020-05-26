@@ -27,10 +27,9 @@
     "e2e": "nx e2e",
     "postversion": "npm run build:libs",
     "build:libs": "nx run router-middleware:build && nx run ngxs:build && nx run ngxs-http:build && nx run ui:build && nx run router-middleware:unlink && nx run ngxs:unlink",
-    "publish:libs": "npx lerna publish",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
-    "affected:build": "nx affected:build --exclude ng-integration",
+    "affected:build": "npm run build:libs",
     "affected:e2e:nx": "nx affected:e2e",
     "affected:e2e": "run-p -r json-server affected:e2e:nx",
     "affected:test": "run-p -r json-server affected:test:nx",
@@ -95,6 +94,9 @@
     "tsickle": "^0.38.1",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "config": {
     "commitizen": {

@@ -2,10 +2,6 @@
   "name": "@ng-frrri/ngxs",
   "version": "0.0.3-alpha.0",
   "license": "MIT",
-  "scripts": {
-    "build": "ng-packagr",
-    "postbuild": "cd dist && npm link"
-  },
   "peerDependencies": {
     "@angular/common": "^9.1.0",
     "@angular/core": "^9.1.0",
@@ -37,5 +33,5 @@
     "access": "public",
     "directory": "./dist"
   },
-  "gitHead": "7bcf4726f97d3f12e51bd2448e1a549fbdfcaa9e"
+  "gitHead": "85f277c72c6a32387b2116dcccd86c6fe44152ad"
 }
