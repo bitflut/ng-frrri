@@ -501,7 +501,6 @@ export class CollectionState<Entity = {}, IdType extends EntityIdType = string, 
                 if (!hasPopulations) { return of(result); }
 
                 const operation = Array.isArray(result) ? OperationContext.Many : OperationContext.One;
-                console.log('--> Population', this.populations, operation);
                 const populations = this.populations.filter(p => !p.operations || p.operations.includes(operation));
                 if (!populations.length) { return of(result); }
 
