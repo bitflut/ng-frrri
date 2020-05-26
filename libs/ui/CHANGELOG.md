@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.3](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/ui@0.0.3-alpha.0...@ng-frrri/ui@0.0.3) (2020-05-26)
+
+
+### Features
+
+* add LICENSE.md ([85f277c](https://github.com/bitflut/ng-frrri/commit/85f277c72c6a32387b2116dcccd86c6fe44152ad))
+
+
+
+
+
 ## [0.0.3-alpha.0](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/ui@0.0.2...@ng-frrri/ui@0.0.3-alpha.0) (2020-05-26)
 
 
