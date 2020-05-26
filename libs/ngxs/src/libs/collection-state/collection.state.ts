@@ -188,7 +188,11 @@ export class CollectionState<Entity = {}, IdType extends EntityIdType = string, 
     }
 
     @DataAction()
-    public deactivate(): void {
+    public deactivate(id?: EntityIdType): void {
+        if (typeof id !== 'undefined') {
+            const isIdActive = this.ctx.getState().active?.[this.primaryKey].toString() === id.toString();
+            if (!isIdActive) { return; }
+        }
         this.ctx.patchState({ active: undefined } as any);
     }
 

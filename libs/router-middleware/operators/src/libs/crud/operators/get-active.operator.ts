@@ -16,7 +16,7 @@ export function getActive(
     return {
         type: OperatorType.GetActive as OperatorType.GetActive,
         statePath,
-        platforms: [Platform.Resolver],
+        platforms: [Platform.Resolver, Platform.Deactivated],
         ...options,
     };
 }
