@@ -1,0 +1,17 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "lib": {
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@ngxs-labs/data/decorators": "@ngxs-labs/data/decorators",
+      "@ngxs-labs/data/repositories": "@ngxs-labs/data/repositories",
+      "@ngxs-labs/data/internals": "@ngxs-labs/data/internals",
+      "@ngxs-labs/data/utils": "@ngxs-labs/data/utils",
+      "@ngxs/store": "@ngxs/store",
+      "@ngxs/store/internals": "@ngxs/store/internals",
+      "parse-link-header": "parse-link-header",
+      "lodash": "lodash"
+    }
+  },
+  "dest": "dist"
+}

@@ -1,10 +1,10 @@
 {
-  "name": "frrri",
+  "name": "ng-frrri",
   "version": "0.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bitflut/frrri.git"
+    "url": "git+https://github.com/bitflut/ng-frrri.git"
   },
   "author": "Marian Plösch",
   "contributors": [
@@ -13,10 +13,10 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/bitflut/frrri/issues"
+    "url": "https://github.com/bitflut/ng-frrri/issues"
   },
-  "homepage": "https://bitflut.gitbook.io/frrri/",
-  "packageScope": "@ng-frrri/",
+  "homepage": "https://bitflut.gitbook.io/ng-frrri/",
+  "packageScope": "@ng-frrri",
   "scripts": {
     "nx": "nx",
     "start": "run-p -r start:ng-integration json-server",
@@ -25,8 +25,10 @@
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
+    "postversion": "npm run affected:build",
     "build:libs": "rm -rf dist && run-s build:libs:ngxs",
-    "build:libs:ngxs": "ng-packagr -p libs/ngxs/package.json",
+    "build:libs:router-middleware": "ng-packagr -p libs/router-middleware",
+    "build:libs:ngxs": "ng-packagr -p libs/ngxs",
     "publish:libs": "run-s publish:libs:ngxs",
     "publish:libs:ngxs": "npm publish dist/@ng-frrri/-ngxs --access=public",
     "affected:apps": "nx affected:apps",
@@ -77,6 +79,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
     "cypress": "^4.1.0",
+    "cz-lerna-changelog": "^2.0.2",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
     "jest": "25.2.3",
@@ -89,9 +92,16 @@
     "npm-run-all": "^4.1.5",
     "parse-link-header": "^1.0.1",
     "prettier": "1.19.1",
+    "semantic-release": "^17.0.8",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
+    "tsickle": "^0.38.1",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
   }
 }

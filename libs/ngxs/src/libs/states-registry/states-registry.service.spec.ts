@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Injectable, NgModule } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
 import { CollectionState, CrudEntities, CrudEntitiesState } from '@ng-frrri/ngxs';
-import { PaginatedCollectionState } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 import { of } from 'rxjs';
@@ -96,7 +95,7 @@ describe('StatesRegistry', () => {
     ], (
         postsState: PostsEntitiesState,
         entityCrudEntitiesState: EntityCrudEntitiesState,
-        collectionRegistry: StatesRegistryService<PaginatedCollectionState>,
+        collectionRegistry: StatesRegistryService<CollectionState>,
     ) => {
         expect(collectionRegistry.getByPath('cache.posts').stateOptions.requestOptions.collectionUrlFactory).toBeDefined();
         expect(postsState).toBe(collectionRegistry.getByPath('cache.posts'));
@@ -107,7 +106,7 @@ describe('StatesRegistry', () => {
         StatesRegistryService,
         TestCrudCollectionService,
     ], async (
-        collectionRegistry: StatesRegistryService<PaginatedCollectionState>,
+        collectionRegistry: StatesRegistryService<CollectionState>,
         service: TestCrudCollectionService,
     ) => {
         const postsState = collectionRegistry.getByPath('cache.posts');

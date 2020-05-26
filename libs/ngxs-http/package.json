@@ -1,10 +1,15 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ng-frrri/ngxs-http",
   "version": "0.0.1",
   "license": "MIT",
+  "scripts": {
+    "build": "ng-packagr"
+  },
   "peerDependencies": {
-    "@ng-frrri/ngxs": "0.0.x"
+    "@ng-frrri/ngxs": "*"
+  },
+  "devDependencies": {
+    "@ng-frrri/ngxs": "*"
   },
   "keywords": [
     "angular",
@@ -20,14 +25,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bitflut/ng-frrri"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/public_api.ts",
-      "umdModuleIds": {
-        "@ng-frrri/ngxs": "@ng-frrri/ngxs"
-      }
-    },
-    "dest": "../../dist/@ng-frrri-ngxs-http"
   }
 }

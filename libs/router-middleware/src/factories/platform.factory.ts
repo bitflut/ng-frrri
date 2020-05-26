@@ -1,17 +1,24 @@
 import { isPlatformServer } from '@angular/common';
 import { Injectable, Injector, PLATFORM_ID } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Platform } from '@ng-frrri/router-middleware/internal';
+import { Platform as PlatformType } from '@ng-frrri/router-middleware/internal';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { FRRRI_MIDDLEWARE, FRRRI_OPERATIONS } from '../constants';
 import { toObservable } from '../helpers/is-observable';
+import { Middleware } from '../interfaces/middleware.interface';
 
 type OptionalArray<T = any> = T | T[];
 
-export function PlatformFactory(platform: Platform) {
+export interface Platform<T = any> extends Resolve<OptionalArray<T>> {
+    getOperations(route: ActivatedRouteSnapshot): any;
+    getMiddlewares(): Middleware[];
+    getOperations$(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>[];
+}
+
+export function PlatformFactory<T = any>(platform: PlatformType): new (...args: any[]) => Platform<T> {
     @Injectable()
-    abstract class PlatformAbstract<T = any> implements Resolve<OptionalArray<T>> {
+    abstract class PlatformAbstract implements Platform<T> {
 
         protected ngPlatformId = this.injector.get(PLATFORM_ID);
 
@@ -62,5 +69,5 @@ export function PlatformFactory(platform: Platform) {
 
     }
 
-    return PlatformAbstract;
+    return PlatformAbstract as any;
 }

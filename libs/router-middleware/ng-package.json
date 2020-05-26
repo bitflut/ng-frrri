@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "lib": {
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "lodash": "lodash"
+    }
+  },
+  "dest": "dist"
+}

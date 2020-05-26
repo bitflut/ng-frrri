@@ -2,5 +2,14 @@
   "packages": [
     "libs/*"
   ],
-  "version": "0.0.1"
+  "version": "independent",
+  "command": {
+    "publish": {
+      "conventionalCommits": true,
+      "yes": true
+    },
+    "version": {
+      "message": "chore(release): publish %v [skip travis]"
+    }
+  }
 }
