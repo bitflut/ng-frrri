@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { DeactivatedPlatform } from './platforms/deactivated.platform';
 import { ResolverPlatform } from './platforms/resolver.platform';
 
 export function frrri(
@@ -9,6 +10,11 @@ export function frrri(
             ['FRRRI']: ResolverPlatform,
             ...route.resolve,
         };
+
+        route.canDeactivate = [
+            DeactivatedPlatform,
+            ...(route.canDeactivate || []),
+        ];
 
         route.children = route.children
             ? frrri(route.children)

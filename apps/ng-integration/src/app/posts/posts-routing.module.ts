@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OperationContext } from '@ng-frrri/ngxs/internal';
 import { frrri, operate } from '@ng-frrri/router-middleware';
-import { activeBreadcrumb, activeMeta, deactivate, getActive, getMany, populate, reset, staticBreadcrumb, staticMeta } from '@ng-frrri/router-middleware/operators';
+import { activeBreadcrumb, activeMeta, getActive, getMany, populate, reset, staticBreadcrumb, staticMeta } from '@ng-frrri/router-middleware/operators';
 import { PostsIndexComponent } from './posts-index/posts-index.component';
 import { PostsShowComponent } from './posts-show/posts-show.component';
 
@@ -21,7 +22,6 @@ const routes: Routes = [
         component: PostsIndexComponent,
         data: operate(
             reset(all),
-            deactivate(posts),
             getMany(posts),
         ),
         children: [{
@@ -37,7 +37,6 @@ const routes: Routes = [
         component: PostsIndexComponent,
         data: operate(
             reset(all),
-            deactivate(posts),
             getMany(posts),
             staticBreadcrumb({ title: 'all posts' }),
             staticMeta({ title: 'All posts ' }),
@@ -61,7 +60,6 @@ const routes: Routes = [
         component: PostsIndexComponent,
         data: operate(
             reset(all),
-            deactivate(posts),
             getMany(posts, { await: true }),
         ),
         children: [{
@@ -84,7 +82,6 @@ const routes: Routes = [
         component: PostsIndexComponent,
         data: operate(
             reset(all),
-            deactivate(posts),
             getMany(posts, { params: { _page: '1', _limit: '5' } }),
         ),
         children: [{
@@ -100,7 +97,6 @@ const routes: Routes = [
         component: PostsIndexComponent,
         data: operate(
             reset(all),
-            deactivate(posts),
             getMany(posts, { params: { _page: '1', _limit: '5' } }),
         ),
         children: [{
@@ -123,12 +119,12 @@ const routes: Routes = [
         component: PostsIndexComponent,
         data: operate(
             reset(all),
-            deactivate(posts),
             populate({
                 from: posts,
                 to: users,
                 idPath: 'userId',
                 idSource: posts,
+                operations: [OperationContext.Many],
             }),
             getMany(posts, { params: { _page: '1', _limit: '5' } }),
             staticMeta({ title: 'Posts with user' }),
@@ -143,12 +139,14 @@ const routes: Routes = [
                     to: comments,
                     idPath: 'postId',
                     idSource: comments,
+                    operations: [OperationContext.One],
                 }),
                 populate({
                     from: posts,
                     to: users,
                     idPath: 'userId',
                     idSource: posts,
+                    operations: [OperationContext.One],
                 }),
                 getActive(posts),
                 activeMeta(posts, {

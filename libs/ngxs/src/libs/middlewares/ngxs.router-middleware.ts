@@ -7,7 +7,7 @@ import { CollectionState } from '../collection-state/collection.state';
 
 type StateFacade = CollectionState | PaginatedCollectionState;
 
-export class NgxsRouterMiddleware extends MiddlewareFactory(Platform.Resolver, Platform.NavigationEnd) implements Middleware {
+export class NgxsRouterMiddleware extends MiddlewareFactory(Platform.Resolver, Platform.NavigationEnd, Platform.Deactivated) implements Middleware {
     operate(operation: Operation, platform: Platform, route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let facade: StateFacade;
         if ('statePath' in operation && operation.statePath) {
@@ -19,6 +19,15 @@ export class NgxsRouterMiddleware extends MiddlewareFactory(Platform.Resolver, P
                 return this.onResolve(operation, facade, route, state);
             case Platform.NavigationEnd:
                 return this.onNavigationEnd(operation, facade, route, state);
+            case Platform.Deactivated:
+                return this.onDeactivated(operation, facade, route, state);
+        }
+    }
+
+    onDeactivated(operation: Operation, facade: StateFacade, route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        switch (operation.type) {
+            case OperatorType.GetActive:
+                return facade.deactivate(route.params[operation.param]);
         }
     }
 
