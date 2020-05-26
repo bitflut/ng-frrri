@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OperationContext } from '@ng-frrri/ngxs/internal';
 import { frrri, operate } from '@ng-frrri/router-middleware';
 import { activeBreadcrumb, activeMeta, getActive, getMany, populate, reset, staticBreadcrumb, staticMeta } from '@ng-frrri/router-middleware/operators';
 import { PostsIndexComponent } from './posts-index/posts-index.component';
@@ -123,6 +124,7 @@ const routes: Routes = [
                 to: users,
                 idPath: 'userId',
                 idSource: posts,
+                operations: [OperationContext.Many],
             }),
             getMany(posts, { params: { _page: '1', _limit: '5' } }),
             staticMeta({ title: 'Posts with user' }),
@@ -137,12 +139,14 @@ const routes: Routes = [
                     to: comments,
                     idPath: 'postId',
                     idSource: comments,
+                    operations: [OperationContext.One],
                 }),
                 populate({
                     from: posts,
                     to: users,
                     idPath: 'userId',
                     idSource: posts,
+                    operations: [OperationContext.One],
                 }),
                 getActive(posts),
                 activeMeta(posts, {
