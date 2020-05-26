@@ -75,13 +75,7 @@
             true,
             {
                 "enforceBuildableLibDependency": true,
-                "allow": [
-                    "@ng-frrri/router-middleware/*",
-                    "@ng-frrri/ngxs/*",
-                    "@ng-frrri/nest-crud/*",
-                    "@ng-frrri/nest-crud-json-server/*",
-                    "@ng-frrri/nest-crud-mongoose/*"
-                ],
+                "allow": [],
                 "depConstraints": [
                     {
                         "sourceTag": "*",
