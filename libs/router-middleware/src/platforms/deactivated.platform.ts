@@ -17,7 +17,6 @@ export class DeactivatedPlatform extends PlatformFactory(Platform.Deactivated) i
     constructor(protected injector: Injector) {
         super(injector);
         const router = this.injector.get(Router);
-        console.log('Hello');
         router.events.pipe(
             filter(startEvent => startEvent instanceof NavigationStart),
             concatMapTo(
