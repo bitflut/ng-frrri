@@ -1,44 +1,45 @@
 {
-    "$schema": "../../node_modules/ng-packagr/package.schema.json",
-    "name": "@ng-frrri/ngxs-crud",
-    "version": "0.0.2",
-    "license": "MIT",
-    "peerDependencies": {
-        "@angular/common": "^9.1.0",
-        "@angular/core": "^9.1.0",
-        "@ngxs/store": "^3.6.2",
-        "@ngxs-labs/data": "^3.0.4",
-        "lodash": "^4.17.15",
-        "parse-link-header": "^1.0.1"
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "name": "@ng-frrri/ngxs",
+  "version": "0.0.0",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "@ngxs/store": "^3.6.2",
+    "@ngxs-labs/data": "^3.0.4",
+    "lodash": "^4.17.15",
+    "parse-link-header": "^1.0.1"
+  },
+  "keywords": [
+    "angular",
+    "frrri",
+    "ng-frrri",
+    "ngxs",
+    "api",
+    "crud",
+    "state management"
+  ],
+  "author": "marian@bitflut.com bitflut.com",
+  "homepage": "https://bitflut.gitbook.io/ng-frrri/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitflut/ng-frrri"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/public_api.ts",
+      "umdModuleIds": {
+        "@ngxs-labs/data/decorators": "@ngxs-labs/data/decorators",
+        "@ngxs-labs/data/repositories": "@ngxs-labs/data/repositories",
+        "@ngxs-labs/data/internals": "@ngxs-labs/data/internals",
+        "@ngxs-labs/data/utils": "@ngxs-labs/data/utils",
+        "@ngxs/store": "@ngxs/store",
+        "@ngxs/store/internals": "@ngxs/store/internals",
+        "parse-link-header": "parse-link-header",
+        "lodash": "lodash"
+      }
     },
-    "keywords": [
-        "Angular",
-        "FRRRI",
-        "NGXS",
-        "API",
-        "CRUD",
-        "State management"
-    ],
-    "author": "marian@bitflut.com bitflut.com",
-    "homepage": "https://bitflut.gitbook.io/frrri/",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/bitflut/frrri"
-    },
-    "ngPackage": {
-        "lib": {
-            "entryFile": "src/public_api.ts",
-            "umdModuleIds": {
-                "@ngxs-labs/data/decorators": "@ngxs-labs/data/decorators",
-                "@ngxs-labs/data/repositories": "@ngxs-labs/data/repositories",
-                "@ngxs-labs/data/internals": "@ngxs-labs/data/internals",
-                "@ngxs-labs/data/utils": "@ngxs-labs/data/utils",
-                "@ngxs/store": "@ngxs/store",
-                "@ngxs/store/internals": "@ngxs/store/internals",
-                "parse-link-header": "parse-link-header",
-                "lodash": "lodash"
-            }
-        },
-        "dest": "../../dist/@ng-frrri/-ngxs-crud"
-    }
+    "dest": "../../dist/@ng-frrri-ngxs"
+  }
 }

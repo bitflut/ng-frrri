@@ -1,19 +1,19 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
-  "name": "@ng-frrri/router-middleware",
+  "name": "@ng-frrri/ngxs-http",
   "version": "0.0.0",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^9.1.0",
-    "@angular/core": "^9.1.0",
-    "lodash": "^4.17.15"
+    "@ng-frrri/ngxs": "0.0.x"
   },
   "keywords": [
     "angular",
     "frrri",
     "ng-frrri",
-    "router",
-    "middleware"
+    "ngxs",
+    "api",
+    "crud",
+    "state management"
   ],
   "author": "marian@bitflut.com bitflut.com",
   "homepage": "https://bitflut.gitbook.io/ng-frrri/",
@@ -25,9 +25,9 @@
     "lib": {
       "entryFile": "src/public_api.ts",
       "umdModuleIds": {
-        "lodash": "lodash"
+        "@ng-frrri/ngxs": "@ng-frrri/ngxs"
       }
     },
-    "dest": "../../dist/@ng-frrri-routes-middleware"
+    "dest": "../../dist/@ng-frrri-ngxs-http"
   }
 }
