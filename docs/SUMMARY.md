@@ -1,21 +1,3 @@
 # Table of contents
 
 * [Introduction](introduction.md)
-* [@ng-frrri/ngxs-crud](ngxs-crud/README.md)
-  * [Usage](ngxs-crud/usage/README.md)
-    * [Installation](ngxs-crud/usage/installation.md)
-    * [Crud Collection](ngxs-crud/usage/crud-collection-state.md)
-    * [Crud Entities](ngxs-crud/usage/crud-entities.md)
-    * [Routing Instructions](ngxs-crud/usage/routing-instructions.md)
-    * [UI Components](ngxs-crud/usage/ui-components/README.md)
-      * [NgxsCrudManyComponent](ngxs-crud/usage/ui-components/ngxscrudmanycomponent.md)
-      * [NgxsCrudOneComponent](ngxs-crud/usage/ui-components/ngxscrudonecomponent.md)
-      * [NgxsCrudActiveComponent](ngxs-crud/usage/ui-components/ngxscrudactivecomponent.md)
-  * [Recipes](ngxs-crud/recipes/README.md)
-    * [Pagination](ngxs-crud/recipes/pagination.md)
-    * [Population](ngxs-crud/recipes/population.md)
-    * [States Registry](ngxs-crud/recipes/states-registry.md)
-    * [SSR](ngxs-crud/recipes/ssr.md)
-    * [SEO & Meta](ngxs-crud/recipes/seo-and-meta.md)
-* [@ng-frrri/nest-crud](frrri-nest-crud.md)
-

@@ -2,17 +2,41 @@
 
 ## 🏎🏎🏎🏎
 
-**FRRRI** \(the racing car\) is a collection of libraries for Angular and Nest to simplify CRUD communication. The **@ng-frrri/ngxs-crud** library is ready for preview now.
+**@ng-frrri** \(the racing car\)
+> Data flow at 250 MPH
 
-They can be used together or separately with any other frontend or backend implementation. They are built to be highly flexible and easily extensible.
+## @ng-frrri/router-middleware
 
-## @ng-frrri/ngxs-crud
+### Synopsis
 
-We suggest reading through the [Usage chapter](ngxs-crud/usage/) in order to understand all basic intentions of @ng-frrri/ngxs-crud.
+We have many years of experience working as external code reviewers for startups using Angular. Most applications communicate with apis and use state management patterns for their uis, preferrably via @ngrx, @ngxs or Akita. We were able to reduce a lot of boilerplate code with *@ngrx/data*, but the way data is fetched and displayed was still quite hard to figure out. We needed to look through reducers, resolvers and components in order to understand how data is flowing. So a very simple problem had many different solutions in code bases we saw.
 
-See [Quick start](https://github.com/bitflut/frrri/tree/4b5441257b908b39c2d218c6c34e711caa1afbf9/docs/ngxs-crud/quick-start.md) for minimal setup instructions.
+Ideally, we figured, you should be able to read an application's data flow simply by looking at the routes. So we came up with a data flow pattern, solutions to hook into Angular's router and a silly name. Here is @ng-frrri/router-middleware.
 
-## @ng-frrri/nest-crud
+### What it looks like:
 
-Browse GitHub repository and tests until documentation catches up.
+```typescript
+import { operate } from '@ng-frrri/router-middleware';
+import { getMany, getActive, reset } from '@ng-frrri/router-middleware/operators';
 
+const all = 'entities';
+const posts = 'entities.posts';
+
+const routes: Routes = [
+    {
+        path: 'posts',
+        data: operate(
+            reset(all),
+            getMany(posts),
+        ),
+        children: [
+            {
+                path: ':id',
+                data: operate(
+                    getActive(posts),
+                ),
+            },
+        ],
+    },
+];
+```

@@ -1,26 +1,48 @@
 <h1 align="center">
-    :racing_car: :racing_car: FRRRI :racing_car: :racing_car:<br>
+    :racing_car: :racing_car: @ng-frrri :racing_car: :racing_car:<br>
 </h1>
 
-<h3 align="center">CRUD for frontend and backend at 250 MPH</h3>
+<h3 align="center">Data flow at 250 MPH</h3>
 
 <p align="center">
-    <img src="https://travis-ci.com/bitflut/frrri.svg?branch=master" title="Build Status">
+    <img src="https://travis-ci.com/bitflut/ng-frrri.svg?branch=master" title="Build Status">
 </p>
 
-## What is FRRRI
+## @ng-frrri/router-middleware
 
-FRRRI (the racing car) is a collection of libraries for Angular and Nest to simplify communication needs.
+### Synopsis
 
-The libraries are built to be highly flexible and easily extensible. They can be used together or solely with any frontend or backend implementation.
+We have many years of experience working as external code reviewers for startups using Angular. Most applications communicate with apis and use state management patterns for their uis, preferrably via @ngrx, @ngxs or Akita. We were able to reduce a lot of boilerplate code with *@ngrx/data*, but the way data is fetched and displayed was still quite hard to figure out. We needed to look through reducers, resolvers and components in order to understand how data is flowing. So a very simple problem had many different solutions in code bases we saw.
 
-## The @ng-frrri/ngxs-crud library is ready for preview now
+Ideally, we figured, you should be able to read an application's data flow simply by looking at the routes. So we came up with a data flow pattern, solutions to hook into Angular's router and a silly name. Here is @ng-frrri/router-middleware.
 
-See [Quick start](https://bitflut.gitbook.io/frrri/) for minimal setup instructions.
+### What it looks like:
 
-## The @ng-frrri/nest-crud library is a work in progress
+```typescript
+import { operate } from '@ng-frrri/router-middleware';
+import { getMany, getActive, reset } from '@ng-frrri/router-middleware/operators';
 
-Browse the repository to catch a glimpse of where we are headed.
+const all = 'entities';
+const posts = 'entities.posts';
+
+const routes: Routes = [
+    {
+        path: 'posts',
+        data: operate(
+            reset(all),
+            getMany(posts),
+        ),
+        children: [
+            {
+                path: ':id',
+                data: operate(
+                    getActive(posts),
+                ),
+            },
+        ],
+    },
+];
+```
 
 ## License
 
