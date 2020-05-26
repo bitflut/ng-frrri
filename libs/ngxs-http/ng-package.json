@@ -1,7 +1,13 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@ngxs-labs/data/decorators": "@ngxs-labs/data/decorators",
+      "@ngxs-labs/data/utils": "@ngxs-labs/data/utils",
+      "@ngxs/store": "@ngxs/store",
+      "@ng-frrri/ngxs": "@ng-frrri/ngxs"
+    }
   },
   "dest": "dist"
 }

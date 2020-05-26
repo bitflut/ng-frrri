@@ -9,6 +9,9 @@
       "@ngxs-labs/data/utils": "@ngxs-labs/data/utils",
       "@ngxs/store": "@ngxs/store",
       "@ngxs/store/internals": "@ngxs/store/internals",
+      "@ng-frrri/router-middleware": "@ng-frrri/router-middleware",
+      "@ng-frrri/router-middleware/internal": "@ng-frrri/router-middleware/internal",
+      "@ng-frrri/router-middleware/operators": "@ng-frrri/router-middleware/operators",
       "parse-link-header": "parse-link-header",
       "lodash": "lodash"
     }

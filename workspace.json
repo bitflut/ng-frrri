@@ -137,6 +137,39 @@
       "sourceRoot": "libs/router-middleware/src",
       "prefix": "frrri",
       "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "ng-packagr"
+              },
+              {
+                "command": "cd dist && npm link"
+              },
+              {
+                "command": "cd ../.. && npm link @ng-frrri/router-middleware"
+              }
+            ],
+            "cwd": "libs/router-middleware",
+            "parallel": false
+          }
+        },
+        "unlink": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd ../.. && npm unlink @ng-frrri/router-middleware"
+              },
+              {
+                "command": "npm unlink"
+              }
+            ],
+            "cwd": "libs/router-middleware",
+            "parallel": false
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -168,6 +201,39 @@
       "sourceRoot": "libs/ngxs/src",
       "prefix": "frrri",
       "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "ng-packagr"
+              },
+              {
+                "command": "cd dist && npm link"
+              },
+              {
+                "command": "cd ../.. && npm link @ng-frrri/ngxs"
+              }
+            ],
+            "cwd": "libs/ngxs",
+            "parallel": false
+          }
+        },
+        "unlink": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd ../.. && npm unlink @ng-frrri/ngxs"
+              },
+              {
+                "command": "npm unlink"
+              }
+            ],
+            "cwd": "libs/ngxs",
+            "parallel": false
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -203,6 +269,17 @@
       "sourceRoot": "libs/ui/src",
       "prefix": "frrri",
       "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ng-packagr -p libs/ui"
+              }
+            ],
+            "parallel": false
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -238,6 +315,17 @@
       "sourceRoot": "libs/ngxs-http/src",
       "prefix": "frrri",
       "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ng-packagr -p libs/ngxs-http"
+              }
+            ],
+            "parallel": false
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {

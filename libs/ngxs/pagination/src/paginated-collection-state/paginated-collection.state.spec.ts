@@ -1,8 +1,6 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
-import { HttpCollectionModule, PaginatedHttpCollection, PaginatedHttpCollectionService } from '@ng-frrri/ngxs-http';
 import { GetManyOptions } from '@ng-frrri/ngxs/internal';
 import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
@@ -24,21 +22,18 @@ export class TestPaginatedCrudService<V = any> implements PaginatedCollectionSer
     getNext(url: any) { return of([]); }
 }
 
-@PaginatedHttpCollection({
-    name: 'post',
-})
 @Injectable()
-class PostsEntitiesState extends PaginatedCollectionState<Post, number> { }
+class PostsEntitiesState extends PaginatedCollectionState<Post, number> {
+    readonly paginatedServiceToken = TestPaginatedCrudService as any;
+}
 
 describe('PaginatedCollectionState', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                HttpClientTestingModule,
                 NgxsDataPluginModule.forRoot(),
                 NgxsModule.forRoot([PostsEntitiesState]),
-                HttpCollectionModule.forRoot(),
             ],
             providers: [
                 {
@@ -46,18 +41,17 @@ describe('PaginatedCollectionState', () => {
                     multi: true,
                     useClass: PaginationInterceptor,
                 },
+                TestPaginatedCrudService,
             ],
         }).compileComponents();
     });
 
     it('should getMany', inject([
-        HttpTestingController,
         PostsEntitiesState,
-        PaginatedHttpCollectionService,
+        TestPaginatedCrudService,
     ], (
-        httpMock: HttpTestingController,
         postsState: PostsEntitiesState,
-        service: PaginatedHttpCollectionService,
+        service: TestPaginatedCrudService,
     ) => {
         expect(postsState.paginatedServiceToken).toBeDefined();
         expect(postsState.serviceToken).toBeDefined();
@@ -65,9 +59,6 @@ describe('PaginatedCollectionState', () => {
 
         const spy = spyOn(service, 'getMany').and.callThrough();
         postsState.getMany().toPromise();
-        const req = httpMock.expectOne(postsState.stateOptions.requestOptions.collectionUrlFactory());
-        expect(req.request.method).toEqual('GET');
-        req.flush([]);
         expect(spy).toHaveBeenCalledTimes(1);
     }));
 
