@@ -132,11 +132,11 @@ class StatesRegistryService {
 {% endtab %}
 {% endtabs %}
 
-### Where is the benefit?
+### What are the benefits?
 
 #### 1.1. Smart-ui
 
-One benefit: The StatesRegistry makes it possible to write general purpose smart-ui components that provide logic used by multiple entities. Imagine you were to write a smart ui component that can be consumed simply by providing a path to the entity's root state:
+The StatesRegistry makes it possible to write general purpose smart-ui components that provide logic used by multiple entities. Imagine you were to write a smart ui component that can be consumed simply by providing a path to the entity's root state:
 
 {% hint style="info" %}
 Ready to use smart components are provided to you in **@ng-frrri/ui**
