@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.4](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/ngxs-http@0.0.3...@ng-frrri/ngxs-http@0.0.4) (2020-05-28)
+
+**Note:** Version bump only for package @ng-frrri/ngxs-http
+
+
+
+
+
 ## [0.0.3](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/ngxs-http@0.0.3-alpha.0...@ng-frrri/ngxs-http@0.0.3) (2020-05-26)
 
 
