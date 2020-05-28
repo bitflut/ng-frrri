@@ -191,5 +191,25 @@ Mapping facades to paths and exposing them via a StatesRegistry is essential for
 
 ## 2. Router middleware
 
-...
+Router middleware is, like the name says, a middleware for the Angular router. Within this middleware you can define operators that run on certain platforms. You can think of those operators like RxJs operators. In fact, they are Observables and they are meant to compute async tasks during the lifecycle of a route. Let’s take a look at the main parts of this concept.
+
+### 2.1. Operators
+
+An operator defines the nature of the operation that you want to get done on a certain platform of your route. This lib ships with a few predefined operators that fit our initial needs when implementing this package. You can easily extend the set of available operators by creating your own.
+
+### 2.2. Platforms
+
+Each operator runs on predefined platforms that describe when an operator should be applied during the lifecycle of an Angular route. For now, 3 platforms are available:
+
+* **NavigationEnd**: Operation runs at the end of route activation \(at ActivationEnd\).
+* **Resolver**: Operation runs as a resolver of your route.
+* **Deactivated**: Operation runs when route was deactivated \(after canDeactivate\).
+
+{% hint style="info" %}
+It is important to know that there can be run multiple operations per Platform. They will be executed one after another.
+{% endhint %}
+
+### 2.3. Middlewares
+
+By extending `MiddlewareFactory`, you have an entry point to simply switch case your operators. No matter if operations work with state management, api requests or file operations. It is very straight forward to write an adapter for whatever kind of task you want to get done. To see a practical example of an adapter like this, take a look at `NgxsRouterMiddleware` which acts as adapter to an @ngxs/store with a CRUD service.
 
