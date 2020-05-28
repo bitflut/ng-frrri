@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
+import { CollectionService, CollectionStateOptions } from '@ng-frrri/ngxs';
 import { GetManyOptions } from '@ng-frrri/ngxs/internal';
 import { Observable } from 'rxjs';
-import { CollectionService, CollectionStateOptions } from '@ng-frrri/ngxs';
 
 @Injectable({
     providedIn: 'root',

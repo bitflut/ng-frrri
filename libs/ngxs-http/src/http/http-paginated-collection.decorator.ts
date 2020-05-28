@@ -1,7 +1,7 @@
 import { CollectionReducer } from '@ng-frrri/ngxs';
-import { HttpCollection } from './http-collection.decorator';
-import { StateClass } from '@ngxs/store/internals';
 import { PaginatedCollectionOptions } from '@ng-frrri/ngxs/pagination';
+import { StateClass } from '@ngxs/store/internals';
+import { HttpCollection } from './http-collection.decorator';
 import { PaginatedHttpCollectionService } from './http-paginated-collection.service';
 
 export function PaginatedHttpCollection<T = CollectionReducer>(options: PaginatedCollectionOptions<T>) {

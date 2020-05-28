@@ -1,31 +1,31 @@
 {
-  "name": "@ng-frrri/ngxs-http",
-  "version": "0.0.3",
-  "license": "MIT",
-  "peerDependencies": {
-    "@ng-frrri/ngxs": "*"
-  },
-  "devDependencies": {
-    "@ng-frrri/ngxs": "^0.1.0"
-  },
-  "keywords": [
-    "angular",
-    "frrri",
-    "ng-frrri",
-    "ngxs",
-    "api",
-    "crud",
-    "state management"
-  ],
-  "author": "marian@bitflut.com bitflut.com",
-  "homepage": "https://bitflut.gitbook.io/ng-frrri/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bitflut/ng-frrri"
-  },
-  "publishConfig": {
-    "access": "public",
-    "directory": "./dist"
-  },
-  "gitHead": "85f277c72c6a32387b2116dcccd86c6fe44152ad"
+    "name": "@ng-frrri/ngxs-http",
+    "version": "0.0.3",
+    "license": "MIT",
+    "peerDependencies": {
+        "@ng-frrri/ngxs": "0.0.x"
+    },
+    "devDependencies": {
+        "@ng-frrri/ngxs": "0.0.x"
+    },
+    "keywords": [
+        "angular",
+        "frrri",
+        "ng-frrri",
+        "ngxs",
+        "api",
+        "crud",
+        "state management"
+    ],
+    "author": "marian@bitflut.com bitflut.com",
+    "homepage": "https://bitflut.gitbook.io/ng-frrri/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bitflut/ng-frrri"
+    },
+    "publishConfig": {
+        "access": "public",
+        "directory": "./dist"
+    },
+    "gitHead": "85f277c72c6a32387b2116dcccd86c6fe44152ad"
 }

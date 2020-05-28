@@ -1,10 +1,10 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
-  "lib": {
-    "entryFile": "src/public_api.ts",
-    "umdModuleIds": {
-      "@ng-frrri/router-middleware": "@ng-frrri/router-middleware"
-    }
-  },
-  "dest": "dist"
+    "$schema": "../../node_modules/ng-packagr/package.schema.json",
+    "lib": {
+        "entryFile": "src/public_api.ts",
+        "umdModuleIds": {
+            "@ng-frrri/router-middleware": "@ng-frrri/router-middleware"
+        }
+    },
+    "dest": "dist"
 }

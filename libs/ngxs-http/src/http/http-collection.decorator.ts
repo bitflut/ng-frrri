@@ -1,8 +1,8 @@
+import { CollectionOptions, CollectionReducer, CollectionStateOptions } from '@ng-frrri/ngxs';
 import { StateRepository } from '@ngxs-labs/data/decorators';
 import { createEntityCollections } from '@ngxs-labs/data/utils';
 import { State } from '@ngxs/store';
 import { StateClass } from '@ngxs/store/internals';
-import { CollectionReducer, CollectionOptions, CollectionStateOptions } from '@ng-frrri/ngxs';
 import { HttpCollectionService } from './http-collection.service';
 
 export function HttpCollection<T = CollectionReducer>(options: CollectionOptions<T>) {

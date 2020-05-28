@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
+import { CollectionStateOptions } from '@ng-frrri/ngxs';
 import { GetManyOptions } from '@ng-frrri/ngxs/internal';
+import { Paginated, PaginatedCollectionService } from '@ng-frrri/ngxs/pagination';
 import { EMPTY, Observable } from 'rxjs';
 import { expand, reduce } from 'rxjs/operators';
-import { CollectionStateOptions } from '@ng-frrri/ngxs';
-import { PaginatedCollectionService, Paginated } from '@ng-frrri/ngxs/pagination';
 
 @Injectable({
     providedIn: 'root',

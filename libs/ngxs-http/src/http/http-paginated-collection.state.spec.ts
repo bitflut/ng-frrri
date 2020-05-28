@@ -2,12 +2,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
+import { NgxsMiddlewareModule } from '@ng-frrri/ngxs';
+import { PaginatedCollectionReducer, PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
-import { PaginatedHttpCollection } from './http-paginated-collection.decorator';
-import { PaginationInterceptor, PaginatedCollectionReducer, PaginatedCollectionState } from '@ng-frrri/ngxs/pagination';
 import { HttpCollectionModule } from './http-collection.module';
-import { NgxsMiddlewareModule } from '@ng-frrri/ngxs';
+import { PaginatedHttpCollection } from './http-paginated-collection.decorator';
 
 interface Post {
     userId: number;

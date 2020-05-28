@@ -1,5 +1,5 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpCollectionService } from './http-collection.service';
 import { PaginatedHttpCollectionService } from './http-paginated-collection.service';
 
