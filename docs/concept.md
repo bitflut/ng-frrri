@@ -211,5 +211,7 @@ It is important to know that there can be run multiple operations per Platform. 
 
 ### 2.3. Middlewares
 
-By extending `MiddlewareFactory`, you have an entry point to simply switch case your operators. No matter if operations work with state management, api requests or file operations. It is very straight forward to write an adapter for whatever kind of task you want to get done. To see a practical example of an adapter like this, take a look at `NgxsRouterMiddleware` which acts as adapter to an @ngxs/store with a CRUD service.
+By extending `MiddlewareFactory`, you have an entry point to simply switch case your operators. No matter if operations work with state management, api requests or file operations. It is very straight forward to write an adapter for whatever kind of task you want to get done.
+
+To see a practical example of an adapter like this, take a look at `NgxsRouterMiddleware` which acts as adapter to an @ngxs/store with a CRUD service.
 
