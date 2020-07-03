@@ -1,5 +1,5 @@
 import { isPlatformServer } from '@angular/common';
-import { Injectable, Injector, PLATFORM_ID } from '@angular/core';
+import { Directive, Injectable, Injector, PLATFORM_ID } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Platform as PlatformType } from '@ng-frrri/router-middleware/internal';
 import { forkJoin, Observable, of } from 'rxjs';
@@ -18,6 +18,7 @@ export interface Platform<T = any> extends Resolve<OptionalArray<T>> {
 
 export function PlatformFactory<T = any>(platform: PlatformType): new (...args: any[]) => Platform<T> {
     @Injectable()
+    @Directive()
     abstract class PlatformAbstract implements Platform<T> {
 
         protected ngPlatformId = this.injector.get(PLATFORM_ID);

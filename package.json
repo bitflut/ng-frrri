@@ -20,7 +20,7 @@
   "scripts": {
     "nx": "nx",
     "start": "run-p -r start:ng-integration json-server",
-    "start:ng-integration": "nx serve ng-integration",
+    "start:ng-integration": "nx serve ng-integration --aot=true",
     "json-server": "json-server db.json",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
@@ -67,7 +67,7 @@
     "@angular-devkit/build-angular": "0.901.0",
     "@angular/compiler-cli": "^9.1.0",
     "@angular/language-service": "^9.1.0",
-    "@ngxs-labs/data": "^3.0.4",
+    "@ngxs-labs/data": "^3.0.6",
     "@ngxs/devtools-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
     "@nrwl/angular": "^9.2.4",

@@ -1,4 +1,4 @@
-import { Injectable, InjectFlags, Injector } from '@angular/core';
+import { Directive, Injectable, InjectFlags, Injector } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Platform } from '@ng-frrri/router-middleware/internal';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { FRRRI_STATES_REGISTRY } from '../constants';
 import { Middleware } from '../interfaces/middleware.interface';
 
 export function MiddlewareFactory<T = any>(...supportedPlatforms: Platform[]): new (...args: any[]) => Middleware<T> {
+    @Directive()
     @Injectable()
     abstract class MiddlewareAbstract implements Middleware<T> {
         supportedPlatforms = supportedPlatforms;
