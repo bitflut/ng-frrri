@@ -1,14 +1,15 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivationEnd, NavigationStart, Resolve, Router } from '@angular/router';
 import { Platform } from '@ng-frrri/router-middleware/internal';
 import { concatMapTo, filter, map, take } from 'rxjs/operators';
-import { PlatformFactory } from '../factories/platform.factory';
+import { PlatformAbstract } from '../abstracts/platform.abstract';
 
 @Injectable()
-export class NavigationEndPlatform<T = any> extends PlatformFactory(Platform.NavigationEnd) implements Resolve<T | T[]> {
+export class NavigationEndPlatform<T = any> extends PlatformAbstract implements Resolve<T | T[]> {
 
-    constructor(protected injector: Injector) {
-        super(injector);
+    platform = Platform.NavigationEnd;
+
+    onInit() {
         const router = this.injector.get(Router);
         router.events.pipe(
             filter(startEvent => startEvent instanceof NavigationStart),

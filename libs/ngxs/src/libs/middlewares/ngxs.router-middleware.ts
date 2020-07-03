@@ -1,12 +1,14 @@
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Middleware, MiddlewareFactory } from '@ng-frrri/router-middleware';
+import { Middleware, MiddlewareAbstract } from '@ng-frrri/router-middleware';
 import { Platform } from '@ng-frrri/router-middleware/internal';
 import { Operation, OperatorType } from '@ng-frrri/router-middleware/operators';
 import { CollectionState } from '../collection-state/collection.state';
 
 type StateFacade = CollectionState;
 
-export class NgxsRouterMiddleware extends MiddlewareFactory(Platform.Resolver, Platform.NavigationEnd, Platform.Deactivated) implements Middleware {
+export class NgxsRouterMiddleware extends MiddlewareAbstract implements Middleware {
+    supportedPlatforms = [Platform.Resolver, Platform.NavigationEnd, Platform.Deactivated];
+
     operate(operation: Operation, platform: Platform, route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let facade: StateFacade;
         if ('statePath' in operation && operation.statePath) {

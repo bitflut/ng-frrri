@@ -1,5 +1,5 @@
+export { MiddlewareAbstract } from './abstracts/middleware.abstract';
 export { FRRRI_MIDDLEWARE, FRRRI_OPERATIONS, FRRRI_STATES_REGISTRY } from './constants';
-export { MiddlewareFactory } from './factories/middleware.factory';
 export { frrri } from './frrri';
 export { FrrriModule } from './frrri.module';
 export { Middleware } from './interfaces/middleware.interface';

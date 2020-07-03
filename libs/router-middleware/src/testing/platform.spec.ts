@@ -5,15 +5,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Platform } from '@ng-frrri/router-middleware/internal';
 import { deactivate, getActive, getMany, staticMeta } from '@ng-frrri/router-middleware/operators';
 import { of } from 'rxjs';
+import { MiddlewareAbstract } from '../abstracts/middleware.abstract';
 import { FRRRI_MIDDLEWARE } from '../constants';
-import { MiddlewareFactory } from '../factories/middleware.factory';
 import { frrri } from '../frrri';
 import { FrrriModule } from '../frrri.module';
 import { Middleware } from '../interfaces/middleware.interface';
 import { operate } from '../operate/operate';
 
 function MiddlewareTestingFactory(id: string | number, platforms: Platform[]) {
-    class MyMiddleware extends MiddlewareFactory(...platforms) implements Middleware {
+    class MyMiddleware extends MiddlewareAbstract implements Middleware {
+        supportedPlatforms = platforms;
         operate(operation: any, platform: Platform, route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
             const name = `${platform} ${id} --> ${operation}`;
             return of(name);

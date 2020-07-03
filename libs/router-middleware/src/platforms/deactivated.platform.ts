@@ -1,21 +1,22 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, ActivationEnd, CanDeactivate, NavigationStart, Router, RouterStateSnapshot } from '@angular/router';
 import { Platform } from '@ng-frrri/router-middleware/internal';
 import { concatMapTo, filter, map, mapTo, take } from 'rxjs/operators';
-import { PlatformFactory } from '../factories/platform.factory';
+import { PlatformAbstract } from '../abstracts/platform.abstract';
 import { toObservable } from '../helpers/is-observable';
 
 @Injectable({
     providedIn: 'root',
 })
-export class DeactivatedPlatform extends PlatformFactory(Platform.Deactivated) implements CanDeactivate<any> {
+export class DeactivatedPlatform extends PlatformAbstract implements CanDeactivate<any> {
+    platform = Platform.Deactivated;
+
     cache: {
         route: ActivatedRouteSnapshot;
         state: RouterStateSnapshot;
     };
 
-    constructor(protected injector: Injector) {
-        super(injector);
+    onInit() {
         const router = this.injector.get(Router);
         router.events.pipe(
             filter(startEvent => startEvent instanceof NavigationStart),

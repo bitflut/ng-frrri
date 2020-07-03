@@ -1,14 +1,14 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CollectionState, CrudEntities, CrudEntitiesState, NgxsMiddlewareModule } from '@ng-frrri/ngxs';
 import { HttpCollection, HttpCollectionModule, PaginatedHttpCollection, PaginatedHttpCollectionService } from '@ng-frrri/ngxs-http';
 import { PaginatedCollectionState, PaginationInterceptor } from '@ng-frrri/ngxs/pagination';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
-import { MockRender } from 'ng-mocks';
+import { MockedComponentFixture, MockRender } from 'ng-mocks';
 import { Subject } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 import { ManyComponent } from './many.component';
@@ -97,7 +97,7 @@ const page3Data = {
 
 describe('ManyComponent', () => {
     let component: ManyComponent;
-    let fixture: ComponentFixture<ManyComponent>;
+    let fixture: MockedComponentFixture<ManyComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({

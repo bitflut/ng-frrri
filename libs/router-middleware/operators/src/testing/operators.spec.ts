@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { frrri, FrrriModule, FRRRI_MIDDLEWARE, Middleware, MiddlewareFactory, operate } from '@ng-frrri/router-middleware';
+import { frrri, FrrriModule, FRRRI_MIDDLEWARE, Middleware, MiddlewareAbstract, operate, StatesRegistry } from '@ng-frrri/router-middleware';
 import { Platform } from '@ng-frrri/router-middleware/internal';
 import { getActive } from '../libs/crud/operators/get-active.operator';
 import { getMany } from '../libs/crud/operators/get-many.operator';
@@ -19,10 +19,14 @@ const operateReset = (operation: any, platform: Platform, route: ActivatedRouteS
     return `${platform} ${operation.type} ${operation.statePath}`;
 };
 
-class FullMiddleware extends MiddlewareFactory(Platform.Resolver, Platform.NavigationEnd) implements Middleware {
+class FullMiddleware extends MiddlewareAbstract implements Middleware {
+    statesRegistry: StatesRegistry<any>;
+    supportedPlatforms = [Platform.Resolver, Platform.NavigationEnd];
     operate = operateFull;
 }
-class ResetMiddleware extends MiddlewareFactory(Platform.Resolver, Platform.NavigationEnd) implements Middleware {
+class ResetMiddleware extends MiddlewareAbstract implements Middleware {
+    statesRegistry: StatesRegistry<any>;
+    supportedPlatforms = [Platform.Resolver, Platform.NavigationEnd];
     operate = operateReset;
 }
 
