@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/router-middleware@0.0.4...@ng-frrri/router-middleware@0.0.5) (2020-07-03)
+
+
+### Bug Fixes
+
+* add @Directive() to factories ([dbe2c7b](https://github.com/bitflut/ng-frrri/commit/dbe2c7bdc6d9cadb79eb93eb2c0c2abca17cba68))
+
+
+
+
+
 ## [0.0.4](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/router-middleware@0.0.3...@ng-frrri/router-middleware@0.0.4) (2020-05-28)
 
 **Note:** Version bump only for package @ng-frrri/router-middleware
