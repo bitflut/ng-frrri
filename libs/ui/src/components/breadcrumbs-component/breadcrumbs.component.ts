@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, Input, OnDestroy, OnInit } from '@angular/core';
 import { BreadcrumbsService } from '@ng-frrri/router-middleware';
 import { Observable, pipe, Subject, UnaryFunction } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,6 +10,11 @@ import { takeUntil } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
+
+    /**
+     * Hides breadcrumbs if only a single breadcrumb is registered for the current route.
+     */
+    @Input() hideSingle: boolean;
 
     private destroy$ = new Subject<void>();
     protected service = this.injector.get(BreadcrumbsService);

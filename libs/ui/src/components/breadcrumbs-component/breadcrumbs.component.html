@@ -1,3 +1,3 @@
-<ng-container *ngIf="(all$ | async)?.length > 1">
+<ng-container *ngIf="!hideSingle || (all$ | async)?.length > 1">
     <ng-content></ng-content>
 </ng-container>
