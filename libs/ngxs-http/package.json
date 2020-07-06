@@ -1,12 +1,12 @@
 {
     "name": "@ng-frrri/ngxs-http",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "license": "MIT",
     "peerDependencies": {
         "@ng-frrri/ngxs": "0.0.x"
     },
     "devDependencies": {
-        "@ng-frrri/ngxs": "^0.0.6"
+        "@ng-frrri/ngxs": "^0.0.7"
     },
     "keywords": [
         "angular",

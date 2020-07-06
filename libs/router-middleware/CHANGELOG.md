@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/router-middleware@0.0.6...@ng-frrri/router-middleware@0.0.7) (2020-07-06)
+
+
+### Bug Fixes
+
+* BehaviorSubject & ReplaySubject(1) for breadcrumbs ([d79ee3b](https://github.com/bitflut/ng-frrri/commit/d79ee3bcefb6dc752fd78800804e3b3e510458c1))
+
+
+
+
+
 ## [0.0.6](https://github.com/bitflut/ng-frrri/compare/@ng-frrri/router-middleware@0.0.5...@ng-frrri/router-middleware@0.0.6) (2020-07-03)
 
 **Note:** Version bump only for package @ng-frrri/router-middleware
