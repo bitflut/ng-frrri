@@ -1,7 +1,7 @@
 import { Injectable, InjectFlags } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { activeBreadcrumb, OperatorType } from '@ng-frrri/router-middleware/operators';
-import { EMPTY, Subject } from 'rxjs';
+import { BehaviorSubject, EMPTY, ReplaySubject } from 'rxjs';
 import { catchError, filter, take, timeout } from 'rxjs/operators';
 import { FRRRI_OPERATIONS, FRRRI_STATES_REGISTRY } from '../constants';
 import { NavigationEndPlatform } from '../platforms/navigation-end.platform';
@@ -9,10 +9,10 @@ import { NavigationEndPlatform } from '../platforms/navigation-end.platform';
 @Injectable()
 export class BreadcrumbsService extends NavigationEndPlatform {
 
-    private activeId$$ = new Subject();
+    private activeId$$ = new ReplaySubject(1);
     activeId$ = this.activeId$$.asObservable();
 
-    private all$$ = new Subject();
+    private all$$ = new BehaviorSubject([]);
     all$ = this.all$$.asObservable();
 
     protected statesRegistry = this.injector.get(FRRRI_STATES_REGISTRY, null, InjectFlags.Optional);
